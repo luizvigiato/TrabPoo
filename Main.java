@@ -16,6 +16,7 @@ public class Main{
       // inicio = keyboard.nextInt();
       if(inicio == 1){
         name = console.readLine("Entre com o nome do usuario");
+        //chamar uma função de validação de usuario para o arquivo...
         
       }
     }while(inicio != 2);
