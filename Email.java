@@ -4,7 +4,7 @@ public class Email{
     //com o nome que foi indicado
     Usuario input;//erda tudo da classe usuario...
     Usuario output;//erda tudo da classe usuario...
-    String mensagem;
+    private String mensagem;
     
     public Email(Usuario input, Usuario output,String mensagem){
         this.input = input;
