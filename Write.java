@@ -2,6 +2,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class Write{
     public static void main(String[] args) {
@@ -12,15 +13,17 @@ public class Write{
         ObjectInputStream oin = new ObjectInputStream(fin);
         /*Lendo os objetos de um arquivo e fazendo a
         coercao de tipos*/
-        
-        Email[] email = (Email[]) oin.readObject();
+        //System.out.println((ArrayList) oin.readObject());
+        ArrayList<Email> email = (ArrayList<Email>) oin.readObject();
         oin.close();
         fin.close();
         
         //Uma forma de diferente do for para percorrer vetores
-        for (Email p : email) {
-            System.out.println(p.getMensagem());
-        }
+        //for (Email p : email) {
+        //    System.out.println(p.getMensagem());
+        //}
+        System.out.println(email.get(0).getMensagem());
+        System.out.println(email.get(1).getMensagem());
         }catch (Exception ex) {
         System.err.println("erro: " + ex.toString());
         }

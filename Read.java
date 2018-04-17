@@ -1,13 +1,21 @@
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
 public class Read{
     public static void main(String[] args){
-        Email[] email = new Email[3];
-        email[1] = new Email("in","out","puta","quepariu");
-        email[0] = new Email("in","out","puta","quepariu");
-        email[2] = new Email("in","out","puta","quepariu");
+        ArrayList<Email> email = new ArrayList<Email>();
+
+        Email novo = new Email("user","receveir","post","you fuck");
+        Email novo2 = new Email("user","receveir","post","you fuck2");
+
+        email.add(novo);
+        email.add(novo2);
+
+        System.out.println(email.get(0).getMensagem());
 
         File arq = new File("arquivo.dat");
         try{
