@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Email implements Serializable{
     //Definir forma que armazeno os arquivos
