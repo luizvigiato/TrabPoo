@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Write{
-    public ArrayList listaCompleta(){
+    public ArrayList abrirArquivo(){
         File arquivo = new File("arquivo.dat");
 
         ArrayList<Email> email = new ArrayList<Email>();

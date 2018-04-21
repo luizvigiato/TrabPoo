@@ -8,11 +8,11 @@ public class Main{
     Scanner keyboard = new Scanner(System.in);
     Console console = System.console();
 
-    ReadAndWrite entrar = new ReadAndWrite();
-    Write leitura = new Write();
+    //ReadAndWrite entrar = new ReadAndWrite();
+    //Write leitura = new Write();
 
     ArrayList<Email> emails = new ArrayList<Email>();//enquanto o programa não for fechado não vai perder nada
-    emails = leitura.listaCompleta(); //Retorna ou uma lista completa de informacoes ou elemento vazio
+    //emails = leitura.listaCompleta(); //Retorna ou uma lista completa de informacoes ou elemento vazio
 
     int inicio = 2;
     String name;
