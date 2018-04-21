@@ -18,7 +18,8 @@ public class Main{
     // String name;
 
     ReadAndWrite funcao = new ReadAndWrite();
-    funcao.login();
+    funcao.login();//chama o programa
+    
     
     // do{
     //   System.out.println("1 - Para Logar.");
