@@ -17,7 +17,14 @@ public class Email implements Serializable{
     }
 
     public Email(){
+    }
 
+    public String getInput(){
+        return this.input;
+    }
+
+    public String getOutput(){
+        return this.output;
     }
 
     public String getAssunto(){
