@@ -14,7 +14,7 @@ public class ReadAndWrite{
     public void login(){//String nome, ArrayList<Email> emails){
         int opcao;
         do{
-            System.out.println("1-Fazer login\n 2-Finalizar programa");
+            System.out.println("1-Fazer login\n2-Finalizar programa");
             opcao = keyboard.nextInt();
             if(opcao==1){
                 menu();
@@ -36,8 +36,9 @@ public class ReadAndWrite{
             System.out.println("2-Listar os e-mails recebidos.");
             System.out.println("3-Ler um e-mail");
             System.out.println("4-Excluir um email");
-            System.out.println("5-Gravar e-mails");
-            System.out.println("6-Ler e-mails do arquivo");
+            
+            System.out.println("5-Ler e-mails do arquivo");
+            System.out.println("6-Gravar e-mails");
             System.out.println("7-Fazer logout");
 
             opcao = keyboard.nextInt();
@@ -47,27 +48,33 @@ public class ReadAndWrite{
                 novoE = escreverEmail(nome);
                 emails.add(novoE);
                 System.out.println("Email enviado com sucesso");
+                System.out.println();
                 break;
                 case 2://listar
                 listarEmails(nome);
+                System.out.println();
                 break;
                 case 3://ler msg
                 lerEmail(keyboard.nextInt(),nome);
+                System.out.println();
                 break;
                 case 4://Excluir email
                 clearEmail(keyboard.nextInt(),nome);
+                System.out.println();
                 break;
                 case 5:
                 readArq();
+                System.out.println();
                 break;
                 case 6:
                 writeOpen();
+                System.out.println();
                 break;
                 case 7:
                 //finalizar tudo
                 break;
                 default:
-                System.out.println("Favor selecionar opcao valida");
+                System.out.println("Favor selecionar opcao valida\n");
                 break;
             }
         }while(opcao != 7);
@@ -85,9 +92,10 @@ public class ReadAndWrite{
     private void listarEmails(String nome){
         for(int i=0; i < emails.size();i++){
             if(emails.get(i).getOutput().equals(nome)){//Se contiver
-                System.out.println((i+1) + "- " + "Para: " + emails.get(i).getOutput() + "Assunto: " + emails.get(i).getOutput());
+                System.out.println((i+1) + "- " + "Para: " + emails.get(i).getOutput() + "\nAssunto: " + emails.get(i).getAssunto());
             }
         }
+        System.out.println();
     }
 
     private void lerEmail(int x, String nome){
@@ -133,27 +141,21 @@ public class ReadAndWrite{
         System.out.println("Voce deseja regravar o arquivo sem recarregar ele? isso ira apagar tudo que ja continha!");
         System.out.println("1-Sim\n2-Não");
         int x;
-        do{
-            x = keyboard.nextInt();
-            if(x == 2){
-                ArrayList write = new ArrayList<Email>();
-                ArrayList arqEmail = new ArrayList<Email>();
-                arqEmail = leitura.abrirArquivo();
-                for(int i=0; i < emails.size(); i++){
-                    write.add((Email) emails.get(i));
-                }
-                for(int i=0; i < arqEmail.size(); i++){
-                    write.add((Email) arqEmail.get(i));
-                }
-                gravacao.gravarTudo(write);
-            } else {
-                if(x == 1){
-                    gravacao.gravarTudo(emails);
-                } else {
-                    System.out.println("Digite uma opção valida");
-                }
+        x = keyboard.nextInt();
+        if(x == 2){
+            ArrayList write = new ArrayList<Email>();
+            ArrayList arqEmail = new ArrayList<Email>();
+            arqEmail = leitura.abrirArquivo();
+            for(int i=0; i < emails.size(); i++){
+                write.add((Email) emails.get(i));
             }
-        }while(x != 1 || x != 2);
+            for(int i=0; i < arqEmail.size(); i++){
+                write.add((Email) arqEmail.get(i));
+            }
+            gravacao.gravarTudo(write);
+        } else {
+                gravacao.gravarTudo(emails);
+        }
         //feito assim para que quando solicitado salvar não alterar a global a menos que vc carregue
 
     }
