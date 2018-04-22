@@ -52,10 +52,10 @@ public class ReadAndWrite{
                 listarEmails(nome);
                 break;
                 case 3://ler msg
-                lerEmail(keyboard.nextInt());
+                lerEmail(keyboard.nextInt(),nome);
                 break;
                 case 4://Excluir email
-                clearEmail(keyboard.nextInt());
+                clearEmail(keyboard.nextInt(),nome);
                 break;
                 case 5:
                 readArq();
@@ -82,19 +82,19 @@ public class ReadAndWrite{
         return novoEmail;
     }
 
-    private void listarEmails(String name){
+    private void listarEmails(String nome){
         for(int i=0; i < emails.size();i++){
-            if(emails.get(i).getOutput().equals(name)){//Se contiver
-                System.out.println((i+1) + "- " + "Para: " + emaisl.get(i).getOutput() + "Assunto: " + emails.get(i).getOutput());
+            if(emails.get(i).getOutput().equals(nome)){//Se contiver
+                System.out.println((i+1) + "- " + "Para: " + emails.get(i).getOutput() + "Assunto: " + emails.get(i).getOutput());
             }
         }
     }
 
-    private void lerEmail(int x){
+    private void lerEmail(int x, String nome){
         int i=0;
         x--;
         do{
-            if(emails.get(i).getInput().equals(name)){
+            if(emails.get(i).getInput().equals(nome)){
                 x--;
             }
             if(x!=0) i++;
@@ -105,7 +105,7 @@ public class ReadAndWrite{
         System.out.println("Mensagem: " + emails.get(i).getMensagem());
     }
 
-    private void clearEmail(int x){
+    private void clearEmail(int x, String name){
         int i=0;
         x--;
         do{
@@ -132,8 +132,9 @@ public class ReadAndWrite{
     private void writeOpen(){
         System.out.println("Voce deseja regravar o arquivo sem recarregar ele? isso ira apagar tudo que ja continha!");
         System.out.println("1-Sim\n2-Não");
+        int x;
         do{
-            int x = keyboard.nextInt();
+            x = keyboard.nextInt();
             if(x == 2){
                 ArrayList write = new ArrayList<Email>();
                 ArrayList arqEmail = new ArrayList<Email>();
@@ -141,8 +142,8 @@ public class ReadAndWrite{
                 for(int i=0; i < emails.size(); i++){
                     write.add((Email) emails.get(i));
                 }
-                for(int i=0; i < emailsArq.size(); i++){
-                    write.add((Email) emailsArq.get(i));
+                for(int i=0; i < arqEmail.size(); i++){
+                    write.add((Email) arqEmail.get(i));
                 }
                 gravacao.gravarTudo(write);
             } else {
