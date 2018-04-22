@@ -55,11 +55,13 @@ public class ReadAndWrite{
                 System.out.println();
                 break;
                 case 3://ler msg
-                lerEmail(keyboard.nextInt(),nome);
+                int x = keyboard.nextInt();
+                lerEmail(x,nome);
                 System.out.println();
                 break;
                 case 4://Excluir email
-                clearEmail(keyboard.nextInt(),nome);
+                x = keyboard.nextInt();
+                clearEmail(x,nome);
                 System.out.println();
                 break;
                 case 5:
@@ -99,33 +101,42 @@ public class ReadAndWrite{
     }
 
     private void lerEmail(int x, String nome){
-        int i=0;
-        x--;
-        do{
-            if(emails.get(i).getInput().equals(nome)){
+        int valor = 0;
+        //System.out.println("entrou");
+        for(int i=0;x>0;i++){
+            
+            if(emails.get(i).getOutput().equals(nome)){
+                //System.out.println("loop");
                 x--;
+                valor = i;
             }
-            if(x!=0) i++;
-        }while(x!=0 || i!=emails.size());
+        }
+        // int i=0;
+        // do{
+        //     if(emails.get(i).getOutput().equals(nome)){
+        //         if(x!=0) x--;
+        //     }
+        //     if(x!=0) i++;
+        // }while(x!=0 || i!=emails.size());
         //nao precisaria de validacão teoricamente
-        System.out.println("De: " +  emails.get(i).getInput());
-        System.out.println("Assunto: " + emails.get(i).getAssunto());
-        System.out.println("Mensagem: " + emails.get(i).getMensagem());
+        //System.out.println("Saiu" + valor + "\n");
+        System.out.println("De: " +  emails.get(valor).getInput());
+        System.out.println("Assunto: " + emails.get(valor).getAssunto());
+        System.out.println("Mensagem: " + emails.get(valor).getMensagem());
     }
 
     private void clearEmail(int x, String name){
-        int i=0;
-        x--;
-        do{
-            if(emails.get(i).getInput().equals(name)){
+        int valor = 0;
+        //System.out.println("entrou");
+        for(int i=0;x>0;i++){
+            
+            if(emails.get(i).getOutput().equals(nome)){
+                //System.out.println("loop");
                 x--;
+                valor = i;
             }
-            if(x!=0){
-                i++;
-            } else {
-                emails.remove(i);
-            }
-        }while(x!=0 || i!=emails.size());
+        }
+        emails.remove(valor);
         System.out.println("Email removido com sucesso");
     }
 
