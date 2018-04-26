@@ -36,7 +36,6 @@ public class ReadAndWrite{
             System.out.println("2-Listar os e-mails recebidos.");
             System.out.println("3-Ler um e-mail");
             System.out.println("4-Excluir um email");
-            
             System.out.println("5-Ler e-mails do arquivo");
             System.out.println("6-Gravar e-mails");
             System.out.println("7-Fazer logout");
@@ -102,24 +101,13 @@ public class ReadAndWrite{
 
     private void lerEmail(int x, String nome){
         int valor = 0;
-        //System.out.println("entrou");
         for(int i=0;x>0;i++){
             
             if(emails.get(i).getOutput().equals(nome)){
-                //System.out.println("loop");
                 x--;
                 valor = i;
             }
         }
-        // int i=0;
-        // do{
-        //     if(emails.get(i).getOutput().equals(nome)){
-        //         if(x!=0) x--;
-        //     }
-        //     if(x!=0) i++;
-        // }while(x!=0 || i!=emails.size());
-        //nao precisaria de validacão teoricamente
-        //System.out.println("Saiu" + valor + "\n");
         System.out.println("De: " +  emails.get(valor).getInput());
         System.out.println("Assunto: " + emails.get(valor).getAssunto());
         System.out.println("Mensagem: " + emails.get(valor).getMensagem());
@@ -127,11 +115,9 @@ public class ReadAndWrite{
 
     private void clearEmail(int x, String name){
         int valor = 0;
-        //System.out.println("entrou");
         for(int i=0;x>0;i++){
             
             if(emails.get(i).getOutput().equals(nome)){
-                //System.out.println("loop");
                 x--;
                 valor = i;
             }
