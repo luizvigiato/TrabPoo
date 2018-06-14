@@ -91,9 +91,11 @@ public class ReadAndWrite{
     }
 
     private void listarEmails(String nome){
+        int y=1;
         for(int i=0; i < emails.size();i++){
             if(emails.get(i).getOutput().equals(nome)){//Se contiver
-                System.out.println((i+1) + "- " + "Para: " + emails.get(i).getOutput() + "\nAssunto: " + emails.get(i).getAssunto());
+                System.out.println(y + " - " + "Para: " + emails.get(i).getOutput() + "\nAssunto: " + emails.get(i).getAssunto());
+                y++;
             }
         }
         System.out.println();
@@ -117,7 +119,7 @@ public class ReadAndWrite{
         int valor = 0;
         for(int i=0;x>0;i++){
             
-            if(emails.get(i).getOutput().equals(nome)){
+            if(emails.get(i).getOutput().equals(name)){
                 x--;
                 valor = i;
             }
