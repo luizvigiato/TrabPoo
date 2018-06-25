@@ -127,8 +127,18 @@ public class Main{
                 }
                 break;
             case 102:
+                System.out.println("Digite o ID do veiculo:");
+                rmId = sc.next();
+                clear = localizarId(rmId);//reaproveitado do 98
+                if(clear != -1){
+                    corrida.get(clear).setDistancia();
+                }
                 break;
             case 103:
+                System.out.println("Digite o tipo do veiculo (B,C,M,F):");
+                tipoV = sc.next().charAt(0);
+                movimentarVeiculos(tipoV);
+                System.out.println("Feito!");
                 break;
             case 104:
                 break;
@@ -196,6 +206,18 @@ public class Main{
         for(int i=0;i< corrida.size();i++){
             if(corrida.get(i).getId().charAt(0) == c){
                 corrida.get(i).abastecer(qnt);
+            }
+        }
+    }
+
+    public static void movimentarVeiculos(char c){
+        for(int i=0;i< corrida.size();i++){
+            if(corrida.get(i).getId().charAt(0) == c){
+                if(corrida.get(i).movimentar()){
+                    corrida.get(i).setDistancia();
+                } else {
+                    System.out.println("Veiculo"+corrida.get(i).getId()+" nao pode ser movimentado");
+                }
             }
         }
     }

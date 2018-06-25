@@ -12,4 +12,8 @@ public class Roda{
     public boolean get(){
         return calibragem;
     }
+
+    public void setVazio(){
+        calibragem = false;
+    }
 }

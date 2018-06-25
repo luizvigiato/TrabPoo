@@ -54,6 +54,10 @@ public abstract class Veiculo{
         rodas.set();
     }
 
+    public void esvaziar(){
+        rodas.setVazio(); //poderia chamar novamente o construtor(?)
+    }
+
     public boolean movimentar(){
         if(rodas.get()){
             return true;
