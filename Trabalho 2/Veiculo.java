@@ -23,6 +23,17 @@ public abstract class Veiculo{
         return distancia;
     }
 
+    public void setDistancia(){
+        int c = id.charAt(0);
+        if(c == 66 && movimentar()){
+            this.distancia += 1;
+        }
+    }
+
+    public void calibrar(){
+        rodas.set();
+    }
+
     public boolean movimentar(){
         if(rodas.get()){
             return true;

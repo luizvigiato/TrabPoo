@@ -9,6 +9,10 @@ import java.io.Console;
  */
 public class Main{
     // Lembrar de tratar usuario burro e ignorante
+
+    public static ArrayList<Veiculo> corrida = new ArrayList<Veiculo>();
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Console console = System.console();
@@ -17,7 +21,6 @@ public class Main{
         boolean numero;
         numero = false;
 
-        ArrayList<Veiculo> corrida = new ArrayList<Veiculo>();
 
         do {
             System.out.println("a - Incluir veiculo");
@@ -47,9 +50,12 @@ public class Main{
 
                 switch(id){
                     case 66://Bicicleta
-                        Bike bike = new Bike(1);
+                    //buscar ultimo id valido
+                        int x = buscarId();
+                        Bike bike = new Bike(x);
                         corrida.add(bike);
-                        System.out.println(corrida.get(0).getId());
+                        //System.out.println(corrida.get(0).getId());
+                        //if(x >1 )System.out.println(corrida.get(1).getId());
                     break;
                     case 67://Carro Popular
                     break;
@@ -99,4 +105,13 @@ public class Main{
 
     }
 
+    public static int buscarId(){
+        int a = corrida.size();
+        if(a == 0){
+            return 1;
+        } else {
+            char c = corrida.get(a-1).getId().charAt(1);
+            return c-47;
+        }
+    }
 }
