@@ -1,6 +1,6 @@
 public abstract class Veiculo{
     private String id;
-    private int distancia;
+    private int distancia = 0;
     private Roda rodas = new Roda();
     private int qtnRodas;
 
@@ -45,6 +45,8 @@ public abstract class Veiculo{
                 default:
                 System.err.print("D");
             }
+        } else{
+            System.out.println("Pneu murcho");
         }
     }
 
@@ -58,6 +60,10 @@ public abstract class Veiculo{
         } else{
             return false;
         }
+    }
+
+    public void abastecer(float x){
+        Motor.testeClasse(x);
     }
 
 }

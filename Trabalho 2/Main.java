@@ -25,6 +25,7 @@ public class Main{
 
 
         do {
+            System.out.println("---------- MENU ----------");
             System.out.println("a - Incluir veiculo");
             System.out.println("b - Remover um Veiculo");
             System.out.println("c - Remover veiculo por tipo");
@@ -39,10 +40,10 @@ public class Main{
             System.out.println("l - Imprimir pista de corrida:");
             System.out.println("m - Esvaziar pneus");
             System.out.println("n - Calibrar pneus");
-            System.out.println("o - Fechar esta caralha");
+            System.out.println("o - Fechar");
             opcao = sc.next().charAt(0);
             switch (opcao) {
-                //TABELA ASCII
+                //TABELA ASCII - SIM EU ACHO MAIS FACIL TRABALHAR COM ASCII
             case 97:
                 //String nome = console.readLine("Digite o tipo de veiculo\nB- Bicicleta\nM- Moto\nC- Carro Popular\nF- Ferrari:");
                 System.out.println("Digite o tipo de veiculo\nB- Bicicleta\nM- Moto\nC- Carro Popular\nF- Ferrari:");
@@ -54,7 +55,7 @@ public class Main{
                     
                     case 66://Bicicleta
                     //buscar ultimo id valido
-                        int x = buscarId();
+                        int x = ultimoId();
                         Bike bike = new Bike(x);
                         corrida.add(bike);
                         System.out.println("Veiculo adicionado a corrida!\n");
@@ -62,19 +63,19 @@ public class Main{
                         //if(x >1 )System.out.println(corrida.get(1).getId());
                     break;
                     case 67://Carro Popular
-                        x = buscarId();
+                        x = ultimoId();
                         Popular popular = new Popular(x);
                         corrida.add(popular);
                         System.out.println("Veiculo adicionado a corrida!\n");
                     break;
                     case 70://Ferrari
-                        x = buscarId();
+                        x = ultimoId();
                         Ferrari ferrari = new Ferrari(x);
                         corrida.add(ferrari);
                         System.out.println("Veiculo adicionado a corrida!\n");
                     break;
                     case 77://Moto
-                        x = buscarId();
+                        x = ultimoId();
                         Moto moto = new Moto(x);
                         corrida.add(moto);
                         System.out.println("Veiculo adicionado a corrida!\n");
@@ -90,8 +91,10 @@ public class Main{
                 rmId = sc.next();
                 int clear;
                 clear = localizarId(rmId);
-                corrida.remove(clear);
-                System.out.println("Veiculo removido com sucesso\n");
+                if(clear != -1){
+                    corrida.remove(clear);
+                    System.out.println("Veiculo removido com sucesso\n");}
+                else System.out.println("Não existe veiculo com esse ID\n");
                 break;
             case 99:
                 System.out.println("Digite o tipo do veiculo (B,C,M,F):");
@@ -99,8 +102,29 @@ public class Main{
                 removerTipo(tipoV);
                 break;
             case 100:
+                System.out.println("Digite o ID do veiculo:");
+                rmId = sc.next();
+                clear = localizarId(rmId);//reaproveitado do 98
+                if(clear != -1){
+                    if(corrida.get(clear).getId().charAt(0) == 66) System.out.println("Bicicleta nao precisa ser abastecida");
+                    else{
+                        System.out.println("Digite o quanto gostaria de abatecer:");
+                        float volume = sc.nextFloat();
+                        corrida.get(clear).abastecer(volume);
+                    }
+                }
+                else System.out.println("Não existe veiculo com esse ID\n");
                 break;
             case 101:
+                System.out.println("Digite o tipo do veiculo (B,C,M,F):");
+                tipoV = sc.next().charAt(0);
+                System.out.println("Digite o quanto gostaria de abatecer:");
+                float volume = sc.nextFloat();
+                if(tipoV == 66) System.out.println("Bicicletas nao precisa ser abastecida");
+                else{
+                    abastecerTipo(tipoV, volume);
+                    System.out.println("Feito!");
+                }
                 break;
             case 102:
                 break;
@@ -131,7 +155,7 @@ public class Main{
 
     }
 
-    public static int buscarId(){
+    public static int ultimoId(){//verifica o ultimo ID da lista
         int a = corrida.size();
         if(a == 0){
             return 1;
@@ -165,6 +189,14 @@ public class Main{
             System.out.println("Removido\n");
         } else {
             System.out.println("O tipo escolhido não existe");
+        }
+    }
+
+    public static void abastecerTipo(char c,float qnt){
+        for(int i=0;i< corrida.size();i++){
+            if(corrida.get(i).getId().charAt(0) == c){
+                corrida.get(i).abastecer(qnt);
+            }
         }
     }
 }
