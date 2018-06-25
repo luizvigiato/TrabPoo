@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 import java.io.Console;
 
 /**
@@ -27,7 +29,7 @@ public class Main{
             System.out.println("b - Remover um Veiculo");
             System.out.println("c - Remover veiculo por tipo");
             System.out.println("d - Abastecer veiculo");
-            System.out.println("e - Abastecer veiculo");
+            System.out.println("e - Abastecer veiculo por tipo");
             System.out.println("f - Movimentar Veiculo");
             System.out.println("g - Movimentar veiculo por tipo");
             System.out.println("h - Gravar dados");
@@ -83,8 +85,18 @@ public class Main{
 
                 break;
             case 98:
+                System.out.println("Digite o ID do veiculo:");
+                String rmId;
+                rmId = sc.next();
+                int clear;
+                clear = localizarId(rmId);
+                corrida.remove(clear);
+                System.out.println("Veiculo removido com sucesso\n");
                 break;
             case 99:
+                System.out.println("Digite o tipo do veiculo (B,C,M,F):");
+                char tipoV = sc.next().charAt(0);
+                removerTipo(tipoV);
                 break;
             case 100:
                 break;
@@ -124,8 +136,35 @@ public class Main{
         if(a == 0){
             return 1;
         } else {
-            char c = corrida.get(a-1).getId().charAt(1);
-            return c-47;
+            String c = corrida.get(a-1).getId().substring(1);
+            return Integer.parseInt(c);
+        }
+    }
+
+    public static int localizarId(String id){
+        if(corrida.size() > 0){
+            for(int i=0;i< corrida.size();i++){
+                if(corrida.get(i).getId().equals(id)) return i;
+            }
+            System.out.println("Id escolhido não existe");
+            return -1;
+        } else {
+            System.out.println("Não existem veiculos a serem eliminados");
+            return -1;
+        }
+    }
+
+    public static void removerTipo(char s){
+        if(s == 66 || s == 67 || s == 70 || s == 77){
+            for(int i=0;i< corrida.size();i++){
+                if(corrida.get(i).getId().charAt(0) == s){
+                    corrida.remove(i);
+                    i--;
+                }
+            }
+            System.out.println("Removido\n");
+        } else {
+            System.out.println("O tipo escolhido não existe");
         }
     }
 }

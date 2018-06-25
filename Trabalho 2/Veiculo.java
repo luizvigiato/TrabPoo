@@ -43,7 +43,7 @@ public abstract class Veiculo{
                     this.distancia +=3;
                     break;
                 default:
-                break;
+                System.err.print("D");
             }
         }
     }
