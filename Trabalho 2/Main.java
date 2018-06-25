@@ -49,19 +49,33 @@ public class Main{
 
 
                 switch(id){
+                    
                     case 66://Bicicleta
                     //buscar ultimo id valido
                         int x = buscarId();
                         Bike bike = new Bike(x);
                         corrida.add(bike);
+                        System.out.println("Veiculo adicionado a corrida!\n");
                         //System.out.println(corrida.get(0).getId());
                         //if(x >1 )System.out.println(corrida.get(1).getId());
                     break;
                     case 67://Carro Popular
+                        x = buscarId();
+                        Popular popular = new Popular(x);
+                        corrida.add(popular);
+                        System.out.println("Veiculo adicionado a corrida!\n");
                     break;
                     case 70://Ferrari
+                        x = buscarId();
+                        Ferrari ferrari = new Ferrari(x);
+                        corrida.add(ferrari);
+                        System.out.println("Veiculo adicionado a corrida!\n");
                     break;
                     case 77://Moto
+                        x = buscarId();
+                        Moto moto = new Moto(x);
+                        corrida.add(moto);
+                        System.out.println("Veiculo adicionado a corrida!\n");
                     break;
                     default:
                     System.out.println("Opcao digitada incorreta!");

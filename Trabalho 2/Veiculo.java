@@ -25,8 +25,26 @@ public abstract class Veiculo{
 
     public void setDistancia(){
         int c = id.charAt(0);
-        if(c == 66 && movimentar()){
-            this.distancia += 1;
+        // if(c == 66 && movimentar()){
+        //     this.distancia += 1;
+        // }
+        if(movimentar()){
+            switch(c){
+                case 66:
+                    this.distancia += 1;
+                    break;
+                case 67:
+                    this.distancia +=5;
+                    break;
+                case 70:
+                    this.distancia +=10;
+                    break;
+                case 77:
+                    this.distancia +=3;
+                    break;
+                default:
+                break;
+            }
         }
     }
 
