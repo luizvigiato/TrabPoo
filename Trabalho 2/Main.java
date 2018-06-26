@@ -140,9 +140,14 @@ public class Main{
                 movimentarVeiculos(tipoV);
                 System.out.println("Feito!");
                 break;
-            case 104:
+            case 104://Gravar dados
+                Write.gravarTudo(corrida);
+                System.out.println("Corrida em memoria foi gravada no arquivo");
                 break;
             case 105:
+                ArrayList <Veiculo> arq = new ArrayList<Veiculo>();
+                arq = Read.abrirArquivo();
+                corrida.addAll(arq);
                 break;
             case 106:
                 System.out.println("Digite o ID do veiculo:");
