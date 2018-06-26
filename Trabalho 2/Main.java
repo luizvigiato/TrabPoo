@@ -145,14 +145,30 @@ public class Main{
             case 105:
                 break;
             case 106:
+                System.out.println("Digite o ID do veiculo:");
+                rmId = sc.next();
+                clear = localizarId(rmId);
+                exibirVCorrida(clear);
                 break;
             case 107:
+                System.out.println("Digite o tipo do veiculo (B,C,M,F):");
+                tipoV = sc.next().charAt(0);
+                exibirTCorrida(tipoV);
                 break;
             case 108:
+                exibirCorrida();
                 break;
             case 109:
+                System.out.println("Digite o ID do veiculo:");
+                rmId = sc.next();
+                clear = localizarId(rmId);
+                corrida.get(clear).esvaziar();
                 break;
             case 110:
+                System.out.println("Digite o ID do veiculo:");
+                rmId = sc.next();
+                clear = localizarId(rmId);
+                corrida.get(clear).calibrar();
                 break;
             case 111:
                 numero = true;
@@ -168,10 +184,12 @@ public class Main{
     public static int ultimoId(){//verifica o ultimo ID da lista
         int a = corrida.size();
         if(a == 0){
+            //System.out.println("entrou aqui");
             return 1;
         } else {
             String c = corrida.get(a-1).getId().substring(1);
-            return Integer.parseInt(c);
+            //System.out.println(c);
+            return Integer.parseInt(c)+1;
         }
     }
 
@@ -216,9 +234,30 @@ public class Main{
                 if(corrida.get(i).movimentar()){
                     corrida.get(i).setDistancia();
                 } else {
-                    System.out.println("Veiculo"+corrida.get(i).getId()+" nao pode ser movimentado");
+                    System.out.println("Veiculo "+corrida.get(i).getId()+" nao pode ser movimentado");
                 }
             }
+        }
+    }
+
+    public static void exibirVCorrida(int x){
+        for(int i = 0; i < corrida.get(x).getDistancia();i++){
+            System.out.print("-");
+        }
+        System.out.print(corrida.get(x).getId() + "\n");
+    }
+
+    public static void exibirTCorrida(char s){
+        for(int i=0;i< corrida.size();i++){
+            if(corrida.get(i).getId().charAt(0) == s){
+                exibirVCorrida(i);
+            }
+        }
+    }
+
+    public static void exibirCorrida(){
+        for(int i=0;i< corrida.size();i++){
+            exibirVCorrida(i);
         }
     }
 }
