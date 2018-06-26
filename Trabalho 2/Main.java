@@ -10,7 +10,7 @@ import java.io.Console;
  * @author luiz
  */
 public class Main{
-    // Lembrar de tratar usuario burro e ignorante
+
 
     public static ArrayList<Veiculo> corrida = new ArrayList<Veiculo>();
 
