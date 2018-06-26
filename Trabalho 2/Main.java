@@ -58,7 +58,7 @@ public class Main{
                         int x = ultimoId();
                         Bike bike = new Bike(x);
                         corrida.add(bike);
-                        System.out.println("Veiculo adicionado a corrida!\n");
+                        System.out.println("Bicicleta adicionada a corrida!\n");
                         //System.out.println(corrida.get(0).getId());
                         //if(x >1 )System.out.println(corrida.get(1).getId());
                     break;
@@ -66,19 +66,19 @@ public class Main{
                         x = ultimoId();
                         Popular popular = new Popular(x);
                         corrida.add(popular);
-                        System.out.println("Veiculo adicionado a corrida!\n");
+                        System.out.println("Carro Popular adicionado a corrida!\n");
                     break;
                     case 70://Ferrari
                         x = ultimoId();
                         Ferrari ferrari = new Ferrari(x);
                         corrida.add(ferrari);
-                        System.out.println("Veiculo adicionado a corrida!\n");
+                        System.out.println("Ferrari adicionada a corrida!\n");
                     break;
                     case 77://Moto
                         x = ultimoId();
                         Moto moto = new Moto(x);
                         corrida.add(moto);
-                        System.out.println("Veiculo adicionado a corrida!\n");
+                        System.out.println("Moto adicionada a corrida!\n");
                     break;
                     default:
                     System.out.println("Opcao digitada incorreta!");
